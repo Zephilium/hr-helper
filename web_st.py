@@ -2,6 +2,11 @@ import nltk
 nltk.download('stopwords')
 
 import os
+os.mkdir('CV')
+os.mkdir('output/example')
+os.mkdir('output/sound')
+os.mkdir('output/text')
+
 import streamlit as st
 import fungsi
 
