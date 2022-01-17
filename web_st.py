@@ -1,12 +1,9 @@
-from os.path import isfile, join
-from os import listdir, remove
+import os
 import streamlit as st
 import fungsi
 import nltk
 nltk.download('stopwords')
 
-
-'=========================================================================='
 # Create a page dropdown
 st.header('HR Helper')
 
@@ -27,7 +24,8 @@ if page == "Seleksi CV":
     if but:
 
         mypath = 'CV/'
-        allfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+        allfiles = [f for f in os.listdir(
+            mypath) if os.path.isfile(os.path.join(mypath, f))]
         st.write(allfiles)
 
         list_orang = []
@@ -53,24 +51,38 @@ if page == "Seleksi CV":
             a = ''
             st.subheader(f'{ind}. {j["nama"]}')
             # st.write(j['skil'])
-            a = ', '.join(j['skil'])
+            a = ', '.os.path.join(j['skil'])
             st.write('Skill :', a)
             ind += 1
 
         # dir = 'path/to/dir'
-        for f in listdir(mypath):
-            remove(join(mypath, f))
+        for f in os.listdir(mypath):
+            os.remove(os.path.join(mypath, f))
 
 
 elif page == "Speech To Text":
     fungsi.stt()
 
+if len(os.listdir('CV/')) == 0:
+    pass
+else:
+    for f in os.listdir('CV/'):
+        os.remove(os.path.join('CV/', f))
 
-for f in listdir('CV/'):
-    remove(join('CV/', f))
+if len(os.listdir('output/example/')) == 0:
+    pass
+else:
+    for f in os.listdir('output/example/'):
+        os.remove(os.path.join('output/example/', f))
 
-for f in listdir('output/example/'):
-    remove(join('output/example/', f))
+if len(os.listdir('output/sound/')) == 0:
+    pass
+else:
+    for f in os.listdir('output/sound/'):
+        os.remove(os.path.join('output/sound/', f))
 
-for f in listdir('output/sound/'):
-    remove(join('output/sound/', f))
+if len(os.listdir('output/text/')) == 0:
+    pass
+else:
+    for f in os.listdir('output/text/'):
+        os.remove(os.path.join('output/text/', f))
