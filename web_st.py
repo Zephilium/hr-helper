@@ -1,3 +1,6 @@
+import nltk
+nltk.download('stopwords')
+
 import fungsi
 
 import streamlit as st
