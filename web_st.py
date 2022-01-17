@@ -3,6 +3,7 @@ nltk.download('stopwords')
 
 import os
 os.mkdir('CV')
+os.mkdir('output')
 os.mkdir('output/example')
 os.mkdir('output/sound')
 os.mkdir('output/text')
