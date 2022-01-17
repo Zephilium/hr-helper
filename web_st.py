@@ -1,9 +1,10 @@
+from os.path import isfile, join
+from os import listdir, remove
+import streamlit as st
+import fungsi
 import nltk
 nltk.download('stopwords')
 
-import fungsi
-
-import streamlit as st
 
 '=========================================================================='
 # Create a page dropdown
@@ -12,9 +13,6 @@ st.header('HR Helper')
 page = st.selectbox("Pilih Menu", ["Seleksi CV", "Speech To Text"])
 
 if page == "Seleksi CV":
-
-    from os import listdir
-    from os.path import isfile, join
 
     fungsi.ekstrak()
     p_posisi = ['UI / UX', 'Back-end developer',
@@ -59,6 +57,20 @@ if page == "Seleksi CV":
             st.write('Skill :', a)
             ind += 1
 
+        # dir = 'path/to/dir'
+        for f in listdir(mypath):
+            remove(join(mypath, f))
+
 
 elif page == "Speech To Text":
     fungsi.stt()
+
+
+for f in listdir('CV/'):
+    remove(join('CV/', f))
+
+for f in listdir('output/example/'):
+    remove(join('output/example/', f))
+
+for f in listdir('output/sound/'):
+    remove(join('output/sound/', f))

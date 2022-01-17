@@ -1,6 +1,4 @@
 import streamlit as st
-import pdfplumber
-
 
 from pyresparser import ResumeParser
 
@@ -10,6 +8,7 @@ import librosa
 
 import soundfile as sf
 import speech_recognition as sr
+import os
 
 
 def ekstrak():
@@ -216,18 +215,17 @@ def stt():
 
     upload_mp3 = st.file_uploader('Choose your .mp3 file', type="mp3")
 
-    st.subheader('========== PROSES ==========')
-
     if upload_mp3 is not None:
 
         song = AudioSegment.from_mp3(upload_mp3)
 
         newSong = song
 
-        newSong.export(f'output/{upload_mp3.name[0:-4]}.wav', format="wav")
+        newSong.export(
+            f'output/sound/{upload_mp3.name[0:-4]}.wav', format="wav")
 
         # st.write(upload_mp3.name[0:-4])
-        audio_path = f'output/{upload_mp3.name[0:-4]}.wav'
+        audio_path = f'output/sound/{upload_mp3.name[0:-4]}.wav'
         x, sampleRate = librosa.load(audio_path)
 
         pos = []
@@ -299,10 +297,29 @@ def stt():
             except:
                 print(path, ' kosong')
 
+        f = open(f"output/text/{upload_mp3.name[0:-4]}.txt", "w")
+        f.write('')
+        f.close()
+
         for i in a:
             f = open(f"output/text/{upload_mp3.name[0:-4]}.txt", "a")
             f.write(i+'\n')
             f.close()
 
+        f = open(f"output/text/{upload_mp3.name[0:-4]}.txt", "r")
+
+        st.download_button(
+            label="Download txt file",
+            data=f.read(),
+            file_name=f'{upload_mp3.name[0:-4]}.txt',
+            mime='text/plain',
+        )
+
+        f.close()
+
     else:
         st.write('Silahkan Upload File mp3')
+
+
+# for f in listdir('output/text/'):
+#     remove(join('outout/text/', f))
