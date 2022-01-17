@@ -2,11 +2,30 @@ import nltk
 nltk.download('stopwords')
 
 import os
-os.mkdir('CV')
-os.mkdir('output')
-os.mkdir('output/example')
-os.mkdir('output/sound')
-os.mkdir('output/text')
+if os.path.exists('CV'):
+    pass
+else:
+    os.mkdir('CV')
+
+if os.path.exists('output'):
+    pass
+else:
+    os.mkdir('output')
+
+if os.path.exists('output/example'):
+    pass
+else:
+    os.mkdir('output/example')
+
+if os.path.exists('output/sound'):
+    pass
+else:
+    os.mkdir('output/sound')
+
+if os.path.exists('output/text'):
+    pass
+else:
+    os.mkdir('output/text')
 
 import streamlit as st
 import fungsi
