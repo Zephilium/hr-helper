@@ -77,7 +77,7 @@ if page == "Seleksi CV":
             a = ''
             st.subheader(f'{ind}. {j["nama"]}')
             # st.write(j['skil'])
-            a = ', '.os.path.join(j['skil'])
+            a = ', '.join(j['skil'])
             st.write('Skill :', a)
             ind += 1
 
