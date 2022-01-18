@@ -4,6 +4,7 @@ import fungsi
 import nltk
 nltk.download('stopwords')
 
+
 # Create a page dropdown
 st.header('HR Helper')
 
@@ -51,7 +52,7 @@ if page == "Seleksi CV":
             a = ''
             st.subheader(f'{ind}. {j["nama"]}')
             # st.write(j['skil'])
-            a = ', '.os.path.join(j['skil'])
+            a = ', '.join(j['skil'])
             st.write('Skill :', a)
             ind += 1
 
@@ -62,6 +63,7 @@ if page == "Seleksi CV":
 
 elif page == "Speech To Text":
     fungsi.stt()
+
 
 if len(os.listdir('CV/')) == 0:
     pass
