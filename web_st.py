@@ -1,8 +1,9 @@
+import nltk
+nltk.download('stopwords')
 import os
 import streamlit as st
 import fungsi
-import nltk
-nltk.download('stopwords')
+
 
 
 # Create a page dropdown
