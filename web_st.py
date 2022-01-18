@@ -30,6 +30,7 @@ else:
 import streamlit as st
 import fungsi
 
+
 # Create a page dropdown
 st.header('HR Helper')
 
@@ -88,6 +89,7 @@ if page == "Seleksi CV":
 
 elif page == "Speech To Text":
     fungsi.stt()
+
 
 if len(os.listdir('CV/')) == 0:
     pass
