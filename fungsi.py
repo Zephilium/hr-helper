@@ -9,6 +9,9 @@ import librosa
 import soundfile as sf
 import speech_recognition as sr
 
+import nltk
+nltk.download('stopwords')
+
 
 def ekstrak():
 
