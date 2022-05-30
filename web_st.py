@@ -1,9 +1,6 @@
 import os
 import streamlit as st
 import fungsi
-import nltk
-nltk.download('stopwords')
-
 
 # Create a page dropdown
 st.header('HR Helper')
@@ -13,10 +10,8 @@ page = st.selectbox("Pilih Menu", ["Seleksi CV", "Speech To Text"])
 if page == "Seleksi CV":
 
     fungsi.ekstrak()
-    p_posisi = ['UI / UX', 'Back-end developer',
-
-
-                'Front-end developer', 'Cloud Computing', 'Data analytics', 'Network Engineer', 'Mobile Developer']
+    p_posisi = ['UI / UX', 'Back-end developer', 'Front-end developer',
+                'Cloud Computing', 'Data analytics', 'Network Engineer', 'Mobile Developer']
 
     pil_posisi = st.selectbox('Pilih Posisi', p_posisi)
 
